@@ -12,10 +12,4 @@ public class FinancialSystemApplication {
         SpringApplication.run(FinancialSystemApplication.class, args);
     }
 
-    @Bean
-    public CommandLineRunner initFranquicias(FranquiciaService franquiciaService) {
-        return args -> {
-            franquiciaService.cargarFranquiciasIniciales();
-        };
-    }
 }
