@@ -16,7 +16,7 @@ public class Tarjeta {
     private String numero;
 
     @Column(name = "fecha_vencimiento", nullable = false)
-    private String fechaVencimiento; // Formato MM/YYYY
+    private String fechaVencimiento;
 
     @Column(name = "cupo_total", nullable = false)
     private BigDecimal cupoTotal;
@@ -25,10 +25,10 @@ public class Tarjeta {
     private BigDecimal cupoDisponible;
 
     @Column(name = "cupo_utilizado")
-    private BigDecimal cupoUtilizado; // Calculado (total - disponible)
+    private BigDecimal cupoUtilizado;
 
     @Column(nullable = false)
-    private String estado; // "ACTIVO" o "INACTIVO"
+    private String estado;
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")

@@ -13,16 +13,31 @@ public class FranquiciaServiceImpl implements FranquiciaService {
     private final FranquiciaRepository franquiciaRepository;
 
     @Override
-    public List<Franquicia> listarTodas() {
-        return franquiciaRepository.findAll();
-    }
-
-    @Override
-    public void cargarFranquiciasIniciales() {
-        if (franquiciaRepository.count() == 0) {
-            franquiciaRepository.save(new Franquicia(null, "VISA"));
-            franquiciaRepository.save(new Franquicia(null, "MASTERCARD"));
-            franquiciaRepository.save(new Franquicia(null, "AMEX"));
+    public String detectar(String numeroTarjeta) {
+        if (numeroTarjeta.length() == 16 &&
+                numeroTarjeta.startsWith("4")) {
+            return "VISA";
         }
+
+        if (numeroTarjeta.length() == 16) {
+
+            int prefijo =
+                    Integer.parseInt(
+                            numeroTarjeta.substring(0, 2));
+
+            if (prefijo >= 51 && prefijo <= 55) {
+                return "MASTERCARD";
+            }
+        }
+
+        if (numeroTarjeta.length() == 15 &&
+                (numeroTarjeta.startsWith("34")
+                        || numeroTarjeta.startsWith("37"))) {
+
+            return "AMEX";
+        }
+
+        throw new IllegalArgumentException(
+                "Franquicia no soportada");
     }
 }

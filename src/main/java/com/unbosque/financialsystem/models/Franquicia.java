@@ -15,5 +15,5 @@ public class Franquicia {
     private Long id;
 
     @Column(nullable = false, unique = true)
-    private String nombre; // "VISA", "MASTERCARD", "AMEX"
+    private String nombre;
 }

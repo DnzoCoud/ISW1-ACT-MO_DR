@@ -9,7 +9,4 @@ import java.util.Optional;
 
 @Repository
 public interface TarjetaRepository extends JpaRepository<Tarjeta, String> {
-    boolean existsByNumero(String numero);
-    List<Tarjeta> findByCliente_NumeroIdentificacion(String clienteId);
-    Optional<Tarjeta> findByNumeroAndEstado(String numero, String estado);
 }
